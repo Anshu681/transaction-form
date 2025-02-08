@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Transaction Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function calculateAmount() {
+            let neccRate = parseFloat(document.getElementById('neccRate').value) || 0;
+            let purchaseTrays = parseFloat(document.getElementById('purchaseTrays').value) || 0;
+            let receivedAmount = parseFloat(document.getElementById('receivedAmount').value) || 0;
+            
+            let tabulatedAmount = neccRate * purchaseTrays;
+            document.getElementById('tabulatedAmount').value = tabulatedAmount.toFixed(2);
+            
+            let difference = receivedAmount - tabulatedAmount;
+            let diffField = document.getElementById('difference');
+            diffField.value = difference.toFixed(2);
+
+            // Change background color based on positive or negative difference
+            if (difference >= 0) {
+                diffField.style.backgroundColor = "lightgreen";
+            } else {
+                diffField.style.backgroundColor = "lightcoral";
+            }
+        }
+
+        // Set today's date as default
+        window.onload = function () {
+            let today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').value = today;
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="C:\Users\rohit\OneDrive\Desktop\new\logoEB.jpg" alt="Company Logo" class="logo"> <!-- Logo added here -->
+        <h2>Daily Transaction Form</h2>
+        <form>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="neccRate">NECC Rate:</label>
+            <input type="number" id="neccRate" name="neccRate" step="0.01" required oninput="calculateAmount()">
+            
+            <label for="purchaseTrays">Purchase Trays:</label>
+            <input type="number" id="purchaseTrays" name="purchaseTrays" required oninput="calculateAmount()">
+            
+            <label for="receivedAmount">Sales Amount Received:</label>
+            <input type="number" id="receivedAmount" name="receivedAmount" step="0.01" required oninput="calculateAmount()">
+            
+            <label for="tabulatedAmount">Tabulated Amount:</label>
+            <input type="number" id="tabulatedAmount" name="tabulatedAmount" readonly>
+            
+            <label for="difference">Difference:</label>
+            <input type="number" id="difference" name="difference" readonly>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fefefe;
+    text-align: center;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.logo {
+    width: 120px; /* Adjust size */
+    display: block;
+    margin: 0 auto 20px;
+}
+
+label, input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#difference {
+    font-weight: bold;
+}
+
+.green-bg { background-color: lightgreen !important; }
+.red-bg { background-color: lightcoral !important; }
